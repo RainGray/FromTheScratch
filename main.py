@@ -1,5 +1,5 @@
 import scripts
-
+import game_exceptions as ex
 
 HERO = {}
 
@@ -8,24 +8,31 @@ def hello_function():
     print('welcome, player')
     hero_name = input('Tell me the name of your hero: \n\r')
     HERO['name'] = hero_name
+    print(f'Hello HERO: {HERO["name"]}')
+
 
 def run_time_game():
-    next_dialog = ''
+    current_dialog = 'dialog_001'
     while True:
-        next_dialog = scripts.continue_the_dialog(next_dialog)
-        # print(next_dialog)
-        """player_reply = input()
+        try:
+            scripts.play_current_dialog(current_dialog)
+        except ex.InvalidDialogNameExeption:
+            current_dialog = 'dialog_001'
+            continue
+        player_reply = input()
         if player_reply == 'exit':
-            print(f'See ya HERO: {HERO}')
-            break"""
-        if next_dialog == 'exit':
-            print(f'See ya HERO: {HERO}')
+            print(f'See you {HERO["name"]}')
             break
+        try:
+            next_dialog = scripts.get_next_dialog(
+                current_dialog=current_dialog,
+                users_answer=player_reply if player_reply else None
+            )
+            current_dialog = next_dialog
+        except ex.WrongAnswerExeption:
+            print('Wrong answer!!! Choose right answer!!!')
 
-# Press the green button in the gutter to run the script.
+
 if __name__ == '__main__':
     hello_function()
-    print(f'Hello HERO: {HERO}')
     run_time_game()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
