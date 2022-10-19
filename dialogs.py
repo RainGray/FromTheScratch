@@ -1,8 +1,6 @@
-
-
 dialog_001 = {
-    'text': 'some text',
-    'question': 'some question',
+    'text': 'some text from dialog_001',
+    'question': 'some question from dialog_001',
     'replys': [
         {
             'next_dialog': 'dialog_002',
@@ -20,7 +18,7 @@ dialog_001 = {
 
 dialog_002 = {
     'text': 'some text of 002',
-    'question': 'some question',
+    'question': 'some question from dialog_002',
     'replys': [
         {
             'next_dialog': 'dialog_001',
@@ -38,7 +36,7 @@ dialog_002 = {
 
 dialog_003 = {
     'text': 'some text of 003',
-    'question': 'some question',
+    'question': 'some question from dialog_003',
     'replys': [
         {
             'next_dialog': 'dialog_001',
